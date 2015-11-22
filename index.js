@@ -4,7 +4,11 @@ var port = process.env.PORT || 1337;
 var app = express();
 
 app.get('/', function(req, res) {
-  res.send('Hello from index');
+  res.send('roooot');
+});
+
+app.get('/hi', function(req, res) {
+  res.send('hi!');
 });
 
 app.listen(port);
