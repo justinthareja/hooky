@@ -18,4 +18,4 @@ ENV NODE_ENV production
 EXPOSE $PORT
 
 # Define runtime and entry point 
-CMD ["node", "src/index.js"]
+CMD ["node", "src/app.js"]

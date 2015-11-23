@@ -1,0 +1,8 @@
+{
+  "token": "9001",
+  "hooks": {
+    "test": "test.sh",
+    "upgrade": "upgrade-container.sh"
+  }
+}
+
