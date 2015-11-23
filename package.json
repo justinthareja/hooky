@@ -1,8 +1,7 @@
 {
-  "name": "webapp",
+  "name": "hooky",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {},
+  "main": "app.js",
   "engines": {
     "node": "5.1.0",
     "npm": "3.3.12"

@@ -16,7 +16,7 @@ app.get('/', function(req, res) {
   res.send('greetings from hookrunner');
 });
 
-app.post('/hookrunner', function(req, res, next) {
+app.post('/hooky', function(req, res, next) {
 
   readConfig().then(function(config) {
 
@@ -47,6 +47,10 @@ app.post('/hookrunner', function(req, res, next) {
   })
   .catch(next);
 
+});
+
+app.get('*', function(req, res) {
+  res.redirect('/');
 });
 
 
