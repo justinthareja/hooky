@@ -12,10 +12,6 @@ app.use(function(err, req, res, next) {
   res.status(500).send(err.message);
 });
 
-app.get('/', function(req, res) {
-  res.send('greetings from hookrunner');
-});
-
 app.post('/hooky', function(req, res, next) {
 
   readConfig().then(function(config) {
@@ -48,11 +44,6 @@ app.post('/hooky', function(req, res, next) {
   .catch(next);
 
 });
-
-app.get('*', function(req, res) {
-  res.redirect('/');
-});
-
 
 app.listen(port);
 

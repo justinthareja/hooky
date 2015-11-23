@@ -6,10 +6,15 @@ A lightweight service to map Docker webhooks to custom scripts.
 
 # Installation
 1. Clone the repo
+
 `git clone https://github.com/justinthareja/hooky.git`
+
 2. Install dependencies
+
 `npm install`
+
 3. Run the server
+
 `node app.js`
 
 # Configuration
@@ -30,7 +35,7 @@ config.json
 
 For any build you want to execute a script for include a webhook on your automated build with the following url:
 
-`http://<yourhookyhost>/hooky?token=<your_custom_token>&hook=<your_hook_name>`
+`http://<your_hooky_host>/hooky?token=<your_custom_token>&hook=<your_hook_name>`
 
 
 
