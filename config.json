@@ -1,8 +1,8 @@
 {
-  "token": "9001",
+  "token": "QWERTY90001",
   "hooks": {
     "hello": "hello.sh",
-    "upgrade": "upgrade-docker-image.sh"
+    "upgrade": "upgrade-hello-docker.sh"
   }
 }
 

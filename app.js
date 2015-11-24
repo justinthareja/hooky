@@ -13,17 +13,17 @@ app.use(function(err, req, res, next) {
 });
 
 app.get('/hooky', function(req, res, next) {
-  res.send('Greetings from your hooky service');
+  res.send('Greetings from hooky');
 });
-app.post('/hooky', function(req, res, next) {
+app.post('/hooky/:hook', function(req, res, next) {
 
   readConfig().then(function(config) {
 
     if (req.query.token !== config.token) { throw new Error ('Invalid Token'); }
-    if (!req.query.hook) { throw new Error('No hook specified' ); }
-    if (!config.hooks[req.query.hook]) { throw new Error('No config set up for hook: ' + req.query.hook); }
+    if (!req.params.hook) { throw new Error('No hook specified' ); }
+    if (!config.hooks[req.params.hook]) { throw new Error('No config set up for hook: ' + req.params.hook); }
     
-    var script = path.join(__dirname, '/scripts/', config.hooks[req.query.hook]);
+    var script = path.join(__dirname, '/scripts/', config.hooks[req.params.hook]);
     var command = spawn(script);
     var output = [];
 
