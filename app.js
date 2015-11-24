@@ -12,6 +12,9 @@ app.use(function(err, req, res, next) {
   res.status(500).send(err.message);
 });
 
+app.get('/hooky', function(req, res, next) {
+  res.send('Greetings from your hooky service');
+});
 app.post('/hooky', function(req, res, next) {
 
   readConfig().then(function(config) {
