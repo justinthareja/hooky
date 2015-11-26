@@ -1,14 +1,23 @@
 {
   "name": "hooky",
-  "version": "1.0.0",
+  "version": "0.0.5",
   "main": "app.js",
-  "engines": {
-    "node": "5.1.0",
-    "npm": "3.3.12"
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha spec/tests.js"
   },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "supertest": "^1.1.0"
+  },
+  "engines": {
+    "node": "5.1.0",
+    "npm": "3.3.12"
   }
 }

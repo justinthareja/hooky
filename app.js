@@ -8,20 +8,14 @@ var port = process.env.PORT || 8080;
 
 var app = express();
 app.use(bodyParser.json());
-app.use(function(err, req, res, next) {
-  res.status(500).send(err.message);
-});
+app.use(handleError);
 
-app.get('/hooky', function(req, res, next) {
-  res.send('Greetings from hooky');
-});
 app.post('/hooky/:hook', function(req, res, next) {
 
   readConfig().then(function(config) {
 
-    if (req.query.token !== config.token) { throw new Error ('Invalid Token'); }
-    if (!req.params.hook) { throw new Error('No hook specified' ); }
     if (!config.hooks[req.params.hook]) { throw new Error('No config set up for hook: ' + req.params.hook); }
+    if (req.query.token !== config.token) { throw new Error ('Invalid Token'); }
     
     var script = path.join(__dirname, '/scripts/', config.hooks[req.params.hook]);
     var command = spawn(script);
@@ -48,7 +42,7 @@ app.post('/hooky/:hook', function(req, res, next) {
 
 });
 
-app.listen(port);
+module.exports = app.listen(port);
 
 console.log('listening on port...', port);
 
@@ -60,3 +54,8 @@ function readConfig() {
     });
   });
 }
+
+function handleError(err, req, res, next) {
+  res.status(500).send(err.message);
+}
+
