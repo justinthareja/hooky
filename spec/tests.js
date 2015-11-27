@@ -44,5 +44,11 @@ describe('/hooky', function () {
       .expect(404, done);
   });
 
+  it('Throws an error if a script at the hook path does not exist', function(done) {
+    request(server)
+      .post('/hooky/noscript?token=QWERTY90001')
+      .expect(500, done);
+  });
+
 
 });

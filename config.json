@@ -2,6 +2,7 @@
   "token": "QWERTY90001",
   "hooks": {
     "hello": "hello.sh",
+    "noscript": "does-not-exist-in-scripts-folder.sh",
     "upgrade": "upgrade-hello-docker.sh"
   }
 }

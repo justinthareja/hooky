@@ -5,15 +5,15 @@ A lightweight service to map Docker webhooks to custom scripts.
 + npm 3.3.12
 
 # Installation
-1. Clone the repo
+Clone the repo
 
 `git clone https://github.com/justinthareja/hooky.git`
 
-2. Install dependencies
+Install dependencies
 
 `npm install`
 
-3. Run the server
+Run the server
 
 `node app.js`
 

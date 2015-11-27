@@ -1,4 +1,4 @@
-var spawn   = require('child_process').spawn;
+var spawn  = require('child_process').spawn;
 var path = require('path');
 var fs = require('fs');
 var express = require('express');
@@ -13,11 +13,14 @@ app.use(handleError);
 app.post('/hooky/:hook', function(req, res, next) {
 
   readConfig().then(function(config) {
-
     if (!config.hooks[req.params.hook]) { throw new Error('No config set up for hook: ' + req.params.hook); }
     if (req.query.token !== config.token) { throw new Error ('Invalid Token'); }
-    
-    var script = path.join(__dirname, '/scripts/', config.hooks[req.params.hook]);
+
+    return path.join(__dirname, '/scripts/', config.hooks[req.params.hook]);
+  })
+  .then(verifyPathExists)
+  .then(function(script) {
+
     var command = spawn(script);
     var output = [];
 
@@ -51,6 +54,15 @@ function readConfig() {
     fs.readFile(__dirname + '/config.json', 'utf-8', function(err, file) {
       if (err) return reject(err);
       resolve(JSON.parse(file));
+    });
+  });
+}
+
+function verifyPathExists(path) {
+  return new Promise (function(resolve, reject) {
+    fs.exists(path, function(exists) {
+      if (!exists) { reject(new Error('No script found at: ' + path)); }
+      resolve(path);
     });
   });
 }
